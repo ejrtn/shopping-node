@@ -1,0 +1,42 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+build/
+
+# 환경 변수
+.env
+.env.local
+.env.*.local
+
+# 로그 파일
+logs/
+*.log
+
+# OS/IDE 설정 파일
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Sequelize migration temp
+*.sqlite
+
+# Coverage (테스트 커버리지 도구)
+coverage/
+
+# PM2 (프로세스 매니저 로그)
+pids/
+*.pid
+*.seed
+
+# 기타
+*.tgz
+*.bak
+*.swp
+
+# Optional
+test-results/
