@@ -3,63 +3,63 @@ const router = express.Router();
 const service = require('../service/deliveryService')
 
 router.post('/deliverySave', (req, res) => {
-    service.deliverySave(res.data)
+    service.deliverySave(req.data)
 });
 
 router.post('/deliveryList', (req, res) => {
-    service.deliveryList(res.data)
+    service.deliveryList(req.data)
 });
 
 router.post('/deliveryStatusUpdate', (req, res) => {
-    service.deliveryStatusUpdate(res.data)
+    service.deliveryStatusUpdate(req.data)
 });
 
 router.post('/getDelivery', (req, res) => {
-    service.getDelivery(res.data)
+    service.getDelivery(req.data)
 });
 
 router.post('/courierCompanyList', (req, res) => {
-    service.courierCompanyList(res.data)
+    service.courierCompanyList(req.data)
 });
 
 router.post('/searchWaybill', (req, res) => {
-    service.searchWaybill(res.data)
+    service.searchWaybill(req.data)
 });
 
 router.post('/deliveryAddressSave', (req, res) => {
-    service.deliveryAddressSave(res.data)
+    service.deliveryAddressSave(req.data)
 });
 
 router.post('/deliveryAddressChange', (req, res) => {
-    service.deliveryAddressChange(res.data)
+    service.deliveryAddressChange(req.data)
 });
 
 router.post('/deliveryAddressList', (req, res) => {
-    service.deliveryAddressList(res.data)
+    service.deliveryAddressList(req.data)
 });
 
 router.post('/deliveryAddressDefault', (req, res) => {
-    service.deliveryAddressDefault(res.data)
+    service.deliveryAddressDefault(req.data)
 });
 
 router.post('/deliveryAddressOne', (req, res) => {
-    service.deliveryAddressOne(res.data)
+    service.deliveryAddressOne(req.data)
 });
 
 router.post('/deliveryAddressDelete', (req, res) => {
-    service.deliveryAddressDelete(res.data)
+    service.deliveryAddressDelete(req.data)
 });
 
 router.post('/deliveryDetailList', (req, res) => {
-    service.deliveryDetailList(res.data)
+    service.deliveryDetailList(req.data)
 });
 
 router.post('/deliveryDetailCommentsList', (req, res) => {
-    service.deliveryDetailCommentsList(res.data)
+    service.deliveryDetailCommentsList(req.data)
 });
 
 router.post('/courier', (req, res) => {
-    service.courier(res.data)
+    service.courier(req.data)
 });
 
 module.exports = router

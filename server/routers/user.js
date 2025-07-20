@@ -4,16 +4,16 @@ const router = express.Router();
 const service = require('../service/userService')
 
 router.post('/userSave', (req, res) => {
-    service.userSave(res.data)
+    service.userSave(req.data)
 });
 
 router.post('/userDelete', (req, res) => {
-    service.userDelete(res.data)
+    service.userDelete(req.data)
 });
 
 router.post('/login', (req, res) => {
-    if(service.login(res.data) == 1){
-        req.session.userId = res.data
+    if(service.login(req.data) == 1){
+        req.session.userId = req.data
     }
 });
 

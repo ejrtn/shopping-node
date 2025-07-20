@@ -3,31 +3,31 @@ const router = express.Router();
 const service = require('../service/productService')
 
 router.post('/productSave', (req, res) => {
-    service.productSave(res.data)
+    service.productSave(req.data)
 });
 
 router.post('/productList', (req, res) => {
-    service.productList(res.data)
+    service.productList(req.data)
 });
 
 router.post('/productDelete', (req, res) => {
-    service.productDelete(res.data)
+    service.productDelete(req.data)
 });
 
 router.post('/productUpdate', (req, res) => {
-    service.productUpdate(res.data)
+    service.productUpdate(req.data)
 }); 
 
 router.post('/getProduct', (req, res) => {
-    service.getProduct(res.data)
+    service.getProduct(req.data)
 });
 
 router.post('/imgLoad', (req, res) => {
-    service.imgLoad(res.data)
+    service.imgLoad(req.data)
 });
 
 router.post('/listAll', (req, res) => {
-    service.productSave(res.data)
+    service.productSave(req.data)
 });
 
 module.exports = router
