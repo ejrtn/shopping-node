@@ -99,7 +99,7 @@ async function deliveryStatusUpdate(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function deliveryRepay(data) {
@@ -115,7 +115,7 @@ async function deliveryRepay(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function deliveryDetailSave(data) {
@@ -141,7 +141,7 @@ async function deliveryDetailSave(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function deliveryDetailList(data) {
@@ -250,7 +250,7 @@ async function deliveryAddressChange(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function deliveryAddressChangeDefaultYn(data) {
@@ -264,7 +264,7 @@ async function deliveryAddressChangeDefaultYn(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function deliveryAddressList(data) {
@@ -347,7 +347,7 @@ async function deliveryAddressDelete(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 module.exports = {

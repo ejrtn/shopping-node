@@ -15,24 +15,24 @@ async function cartSave(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function cartList(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "c.productId"+
+            " c.productId"+
             ", c.userId"+
             ", c.cnt"+
             ", p.img"+
             ", p.price"+
             ", p.discount"+
             ", p.productName"+
-        "FROM shopping.cart c"+
-        "INNER JOIN shopping.products p"+
-        "ON c.productId = p.productId"+
-        "WHERE c.userId = ?",
+        " FROM shopping.cart c"+
+        " INNER JOIN shopping.products p"+
+        " ON c.productId = p.productId"+
+        " WHERE c.userId = ?",
         [
             data.userId
         ]
@@ -52,7 +52,7 @@ async function cartDelete(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function tmpCartDelete(data) {
@@ -65,7 +65,7 @@ async function tmpCartDelete(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function tmpCartSave(data) {
@@ -85,7 +85,7 @@ async function tmpCartSave(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function tmpCartList(data) {

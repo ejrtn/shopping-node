@@ -13,7 +13,7 @@ async function courierCompanyCodeSave(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function courierCode(data) {

@@ -9,7 +9,7 @@ async function ipSave(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function ipCheck() {
@@ -53,7 +53,7 @@ async function ipUpdate(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function ipDelete(data) {
@@ -66,7 +66,7 @@ async function ipDelete(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 module.exports = {

@@ -15,7 +15,7 @@ async function commentSave(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function commentUpdate(data) {
@@ -35,7 +35,7 @@ async function commentUpdate(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function productReview(data) {
@@ -72,7 +72,7 @@ async function productReview(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 module.exports = {

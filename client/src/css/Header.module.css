@@ -1,0 +1,141 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-style:normal;
+}
+html{
+    padding-bottom: 10px;
+}
+em{
+    font-style:normal;
+}
+p{
+    margin: 0px;
+}
+a{
+    text-decoration-line: none;
+    color: black;
+}
+header{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    margin-bottom:20px;
+}
+header .big_menu{
+    display: flex;
+    flex: 1;
+    gap:20px;
+}
+h3{
+    margin: 0px;
+    padding: 0px;
+}
+table{
+    border-collapse : collapse;
+}
+header h3{
+    margin: 0px;
+    padding: 0px 11px;
+    cursor: pointer;
+    position : relative;
+    display : inline-block;
+}
+header .small_menu_area{
+    position : relative;
+}
+header .small_menu_area .small_menu{
+  display : none;
+  position : absolute;
+  width: 100%;
+  text-align: center;
+  background-color: #ffffff;
+  z-index : 1; /*다른 요소들보다 앞에 배치*/
+}
+header .small_menu_area .small_menu label{
+    display : block;
+    cursor:pointer;
+    padding: 3px;
+    font-size:13px;
+}
+header .small_menu_area:hover .small_menu {
+  display: block;
+}
+header .logo h1{
+    margin: 0px 10px 0px 0px;
+    cursor:pointer;
+}
+.msg{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+    display: flex;
+    flex-flow: column;
+}
+.msg img{
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+}
+.msg .chat.hidden{
+    display: none;
+}
+.msg .chatting{
+    width: 200px;
+    height: 300px;
+    border: 1px solid #999999;
+    padding: 9px 6px;
+    background-color: #ebebeb;
+    overflow-y: auto;
+}
+.msg .chatting .default-hello{
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.msg .chatting::-webkit-scrollbar {
+    width: 5px;
+}
+.msg .chatting::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+}
+.msg .chatting::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.msg .write_area{
+    width: 200px;
+    height: 19px;
+    border: 1px solid #999999;
+    border-top: none;
+    padding: 9px 6px;
+    background: #ebebeb;
+    font-size: 13px;
+    overflow-y: auto;
+    outline: 0px;
+}
+.msg .write_area::-webkit-scrollbar {
+    width: 5px;
+}
+.msg .write_area::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+}
+.msg .write_area::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.msg picture{
+    align-self: flex-end;
+    margin-top: 5px;
+}
+.msg p{
+    padding: 0px;
+    margin: 0px;
+    font-size: 13px;
+}

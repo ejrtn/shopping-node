@@ -28,14 +28,14 @@ async function productTotal(){
 async function productUpdate(data){
     return models.productUpdate(data);
 }
-async function top10(){
-    return models.top10();
+async function top10(req,res){
+    res.send(await models.top10())
 };
 async function listAll(data){
     return models.listAll(data);
 }
-async function getProduct(data) {
-    return models.getProduct(data);
+async function getProduct(req,res) {
+    res.send(await models.getProduct(req.body));
 }
 async function productDelete(data) {
     for(let i=0;i<products.length;i++){

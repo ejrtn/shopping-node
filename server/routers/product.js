@@ -19,7 +19,7 @@ router.post('/productUpdate', (req, res) => {
 }); 
 
 router.post('/getProduct', (req, res) => {
-    service.getProduct(req.data)
+    service.getProduct(req,res)
 });
 
 router.post('/imgLoad', (req, res) => {
@@ -28,6 +28,10 @@ router.post('/imgLoad', (req, res) => {
 
 router.post('/listAll', (req, res) => {
     service.productSave(req.data)
+});
+
+router.get('/top10', (req, res) => {
+    service.top10(req,res)
 });
 
 module.exports = router

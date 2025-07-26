@@ -1,0 +1,147 @@
+
+
+
+.main{
+    display: flex;
+    padding: 0px 20px;
+    justify-content: center;
+    width:100%;
+}
+.main .menu{
+    width: 120px;
+    height: 100%;
+    margin: 0px 15px 0px 0px;
+    flex-shrink: 0;
+}
+.main .menu div{
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 10px;
+}
+.main .menu div label{
+    font-size: 14px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.main .menu .menu_hidden_btn{
+
+}
+
+
+.main .product_list{
+    display:flex;
+    flex-flow:column;
+    flex: 1;
+    max-width: 1000px;
+}
+.main .product_list .top{
+    margin-bottom: 20px;
+    position: relative;
+}
+.main .product_list .top .list{
+    padding: 0px 22px;
+    display:flex;
+    justify-content: space-between;
+    overflow-x: scroll;
+    scroll-behavior:smooth;
+    gap: 26px;
+}
+.main .product_list .top .list::-webkit-scrollbar{
+    display:none;
+}
+.main .product_list .bottom{
+    margin-bottom: 20px;
+    position: relative;
+}
+.main .product_list .bottom .list{
+    padding: 0px 22px;
+    display:flex;
+    justify-content: space-between;
+    overflow-x: scroll;
+    scroll-behavior:smooth;
+    gap: 26px;
+}
+.main .product_list .bottom .list::-webkit-scrollbar{
+    display:none;
+}
+.main .product_list .shoes{
+    position: relative;
+}
+.main .product_list .shoes .list{
+    padding: 0px 22px;
+    display:flex;
+    justify-content: space-between;
+    overflow-x: scroll;
+    scroll-behavior:smooth;
+    gap: 26px;
+}
+.main .product_list .shoes .list::-webkit-scrollbar{
+    display:none;
+}
+.main .product_list p{
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-left: 22px;
+}
+.main .product_list label{
+    cursor: pointer;
+    font-size: 11px;
+    position: absolute;
+    right: 23px;
+    top: 7px;
+}
+.main .product_list .list .product{
+    width: 170px;
+    margin-bottom: 20px;
+}
+.main .product_list .list .product.hidden{
+    display:none;
+}
+.main .product_list .list .product a{
+    text-decoration: none;
+    color: black;
+}
+.main .product_list .list .product a span{
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    font-size: 12px;
+}
+.main .product_list .list img{
+    width: 170px;
+    height: 192px;
+    cursor:pointer;
+}
+.main .product_list .rank_1_5{
+    position: absolute;
+    border-left: 3px solid gray;
+    border-bottom: 3px solid gray;
+    width: 20px;
+    height: 20px;
+    left: -4px;
+    top: 100px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.main .product_list .rank_1_5.hidden{
+    display:none;
+}
+.main .product_list .rank_6_10{
+    position: absolute;
+    border-right: 3px solid gray;
+    border-top: 3px solid gray;
+    width: 20px;
+    height: 20px;
+    right: -4px;
+    top: 100px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+.main .product_list .rank_1_5.hidden{
+    display:none;
+}

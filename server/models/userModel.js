@@ -33,7 +33,7 @@ async function userSave(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function userDelete(data) {
@@ -47,7 +47,7 @@ async function userDelete(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function login(data) {
@@ -79,7 +79,7 @@ async function passwordUpdate(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function passwordUpdate2(data) {
@@ -94,7 +94,7 @@ async function passwordUpdate2(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function findId(data) {
@@ -248,7 +248,7 @@ async function userUpdate(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 module.exports = {

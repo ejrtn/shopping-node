@@ -6,6 +6,7 @@ const delivery = require('./delivery.js')
 const kakao = require('./kakao.js')
 const product = require('./product.js')
 const user = require('./user.js')
+const common = require('./common.js')
 const router = express.Router()
 
 router.use('/', cart);
@@ -15,5 +16,6 @@ router.use('/', comment);
 router.use('/', kakao);
 router.use('/', product);
 router.use('/', user);
+router.use('/', common);
 
 module.exports = router

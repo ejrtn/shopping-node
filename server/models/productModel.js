@@ -27,7 +27,7 @@ async function productSave(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function productTotal() {
@@ -95,7 +95,7 @@ async function productUpdate(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function productDelete(data) {
@@ -108,32 +108,32 @@ async function productDelete(data) {
         ]
     );
     conn.release();
-    return result.affectedRows;
+    return result[0].affectedRows;
 }
 
 async function top10() {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "category"+
+            " category"+
             ", productName"+
             ", productId"+
             ", price"+
             ", img"+
             ", ranking"+
             ", discount"+
-        "FROM ("+
+        " FROM ("+
             "SELECT"+
-                "category"+
+                " category"+
                 ", productName"+
                 ", productId"+
                 ", price"+
                 ", img"+
                 ", discount"+
                 ", RANK() OVER(PARTITION BY category ORDER BY numberOfSalse DESC, productId DESC) ranking"+
-            "FROM products"+
+            " FROM products"+
         ") a"+
-        "WHERE a.ranking &lt;= 10;",
+        " WHERE a.ranking <= 10",
     );
     conn.release();
     return result;
@@ -143,15 +143,15 @@ async function listAll(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "productName"+
+            " productName"+
             ", productId"+
             ", price"+
             ", img"+
             ", discount"+
-        "FROM products"+
-        "WHERE category=#{category}"+
+        " FROM products"+
+        " WHERE category=?"+
         data.smallCategory != null ? " and smallCategory="+data.smallCategory+"" : ""+
-        "LIMIT #{},11",
+        " LIMIT ?,11",
         [
             data.category,
             data.startNum
@@ -165,15 +165,15 @@ async function getProduct(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "productName"+
+            " productName"+
             ", concat(category,'-',smallCategory) AS category"+
             ", productId"+
             ", price"+
             ", img"+
             ", discount"+
             ", cnt"+
-        "FROM products"+
-        "WHERE productId = #{}",
+        " FROM products"+
+        " WHERE productId = ?",
         [
             data.productId,
         ]
