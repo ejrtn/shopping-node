@@ -318,7 +318,7 @@ async function deliveryAddressDefault(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "userId"+
+            " userId"+
             ", name"+
             ", postcode"+
             ", address"+
@@ -327,8 +327,8 @@ async function deliveryAddressDefault(data) {
             ", phon"+
             ", defaultYn"+
             ", deliveryAddressId"+
-        "FROM deliveryAddressList"+
-        "WHERE userId=? AND defaultYn='Y'",
+        " FROM deliveryAddressList"+
+        " WHERE userId=? AND defaultYn='Y'",
         [
             data.userId,
         ]

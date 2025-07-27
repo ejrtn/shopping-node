@@ -15,16 +15,15 @@ router.post('/cartDelete', async(req, res) => {
 });
 
 router.post('/tmpCartSave', async(req, res) => {
-    res.send(await service.tmpCartSave(req.data))
+    res.send(await service.tmpCartSave(req.body))
 });
 
 router.post('/tmpCartDelete', async(req, res) => {
     res.send(await service.tmpCartDelete(req.data))
 });
 
-router.get('/tmpCartList/:keyData', async(req, res) => {
-    d = await service.tmpCartList(req.params)
-    res.send(d)
+router.post('/tmpCartList', async(req, res) => {
+    res.send(await service.tmpCartList(req.body))
 });
 
 module.exports = router

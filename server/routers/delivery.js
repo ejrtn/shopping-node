@@ -38,8 +38,8 @@ router.post('/deliveryAddressList', (req, res) => {
     service.deliveryAddressList(req.data)
 });
 
-router.post('/deliveryAddressDefault', (req, res) => {
-    service.deliveryAddressDefault(req.data)
+router.post('/deliveryAddressDefault', async(req, res) => {
+    res.send(await service.deliveryAddressDefault(req.body))
 });
 
 router.post('/deliveryAddressOne', (req, res) => {

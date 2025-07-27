@@ -20,14 +20,10 @@ async function tmpCartSave(data) {
     let key = crypto.randomUUID();
     let r = 0;
     for(let i=0;i<data.length;i++){
-        data[i].setKeyData(key);
-        r = models.tmpCartSave(data[i]);
-        if(r >= 1) {
-            key = null;
-            break;
-        }
+        data[i]['keyData']=key;
+        r += await models.tmpCartSave(data[i]);
     }
-    return models.tmpCartSave(data)
+    return r==data.length?key:''
 }
 
 async function tmpCartList(data) {
