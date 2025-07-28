@@ -1,0 +1,98 @@
+.main {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+    padding: 0px 16px;
+    box-sizing: border-box;
+}
+
+.main span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0px;
+    margin-bottom: 30px;
+}
+
+.main label {
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.main span .close {
+    cursor: pointer;
+}
+
+.main input {
+    box-sizing: border-box;
+    height: 36px;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 0px 8px;
+}
+
+.main .content {
+    display: flex;
+    flex-flow: column;
+    flex: 1;
+}
+
+.main .address {
+    display: flex;
+    margin-bottom: 3px;
+    gap: 3px;
+    flex-flow: row;
+}
+
+.main .address input {
+    margin: 0;
+    flex: 1;
+}
+
+.main .address button {
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: 1px solid #e0e0e0;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.main .address2 {
+    margin-bottom: 8px;
+    display: flex;
+    gap: 3px;
+}
+
+.main #sample6_address {
+    margin-bottom: 3px;
+}
+
+.main #sample6_detailAddress,
+#sample6_extraAddress {
+    width: 50%;
+}
+
+.main .default_checked input {
+    width: 15px;
+    height: 15px;
+    margin: 0px 5px 0px 0px;
+    border: 1px solid #e0e0e0;
+}
+
+.main .default_checked em {
+    font-style: normal;
+}
+
+.main .ok {
+    color: white;
+    background-color: black;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid black;
+    margin-top: 20px;
+    border-radius: 5px;
+}

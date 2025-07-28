@@ -62,6 +62,22 @@ function Main(){
     function deliveryRequest(e){
         setTextarea(e.target.value == '직접입력')
     }
+
+    function addressChange(){
+        const win = window.open("/deliveryAddress", "addressList", "width=448,height=690")
+    }
+    useEffect(() => {
+        const handleMessage = (event) => {
+            if (event.origin !== window.location.origin) return; // 보안 확인
+
+            setUserAddress(event.data.userAddress);
+            setUserName(event.data.userName);
+            setUserPhon(event.data.userPhon);
+        };
+
+        window.addEventListener('message', handleMessage);
+        return () => window.removeEventListener('message', handleMessage);
+    }, []);
     return(
         <div className={styles.main}>
             <div>
@@ -72,7 +88,7 @@ function Main(){
                             <em className={styles.name}>{userName}</em>
                             <em className={styles.default_yn}>기본 배송지</em>
                         </span>
-                        <button className={styles.address_change}>배송지 변경</button>
+                        <button className={styles.address_change} onClick={addressChange}>배송지 변경</button>
                     </p>
                     <p className={styles.address}>{userAddress}</p>
                     <p className={styles.phon}>{userPhon}</p>

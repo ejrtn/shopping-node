@@ -1,0 +1,138 @@
+
+.main {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+
+.main h3 {
+    background-color: rgb(245, 245, 245);
+    display: flex;
+    align-items: center;
+    height: 52px;
+    padding: 12px 16px;
+    margin: 0px;
+}
+
+.main .search {
+    background-color: rgb(245, 245, 245);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 16px 12px 16px;
+    position: relative;
+}
+
+.main input {
+    box-sizing: border-box;
+    height: 36px;
+    width: 100%;
+    border: none;
+    padding: 0px 31px 0px 10px;
+    border-radius: 5px;
+}
+
+.main svg {
+    position: absolute;
+    cursor: pointer;
+    right: 23px;
+    top: 9px;
+}
+
+.main button {
+    background: none;
+    border: 1px solid black;
+    outline: none;
+    border-radius: 5px;
+    margin: 12px 16px;
+    box-sizing: border-box;
+}
+
+.main .address_add {
+    height: 36px;
+    background: none;
+    border: 1px solid #e0e0e0;
+    outline: none;
+    cursor: pointer;
+}
+
+.main .address_list {
+    flex: 1;
+    padding: 0px 10px;
+    gap: 20px;
+    display: flex;
+    flex-flow: column;
+    overflow-y: auto;
+}
+
+.main .user_info {
+    display: flex;
+}
+
+.main .user_info.hidden {
+    display: none;
+}
+
+.main .user_info input {
+    width: 15px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.main .user_info div {
+    display: flex;
+    flex-flow: column;
+    gap: 3px;
+}
+
+.main .user_info div em {
+    font-style: normal;
+}
+
+.main .user_info div span:nth-child(1) {
+    display: flex;
+    align-items: center;
+}
+
+.main .user_info div .name {
+    font-weight: 600;
+    font-size: 15px;
+    margin-right: 5px;
+}
+
+.main .user_info div .default_yn {
+    background-color: #e8e8e8;
+    padding: 0px 4px;
+    font-size: 10px;
+    border-radius: 3px;
+}
+
+.main .user_info div .address {
+    font-size: 13px;
+}
+
+.main .user_info div .phon {
+    font-size: 13px;
+}
+
+.main .user_info div .change_del {
+    display: flex;
+    gap: 5px;
+    flex-flow: row;
+}
+
+.main .user_info div .change_del button {
+    margin: 0;
+    width: 38px;
+    font-size: 12px;
+    padding: 0px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.main .ok {
+    color: white;
+    background-color: black;
+    height: 36px;
+    cursor: pointer;
+}

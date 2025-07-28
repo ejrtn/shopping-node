@@ -32,7 +32,7 @@ async function deliveryList(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "a.deliveryId"+
+            " a.deliveryId"+
             ", a.address"+
             ", a.totalAmount"+
             ", a.userId"+
@@ -46,12 +46,12 @@ async function deliveryList(data) {
             ", a.trackingCode"+
             ", a.companyName"+
             ", count(*) as kindCnt"+
-        "FROM deliveryList a"+
-        "INNER JOIN deliveryDetail b"+
-        "ON a.deliveryId = b.deliveryId"+
-        "WHERE a.userId=?"+
-        "GROUP BY b.deliveryId"+
-        "LIMIT ?,11",
+        " FROM deliveryList a"+
+        " INNER JOIN deliveryDetail b"+
+        " ON a.deliveryId = b.deliveryId"+
+        " WHERE a.userId=?"+
+        " GROUP BY b.deliveryId"+
+        " LIMIT ?,11",
         [
             data.userId,
             data.start,
@@ -65,7 +65,7 @@ async function getDelivery(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "deliveryId"+
+            " deliveryId"+
             ", address"+
             ", totalAmount"+
             ", userId"+
@@ -76,8 +76,8 @@ async function getDelivery(data) {
             ", request"+
             ", quantity"+
             ", tid"+
-        "FROM deliveryList"+
-        "WHERE deliveryId=#{}",
+        " FROM deliveryList"+
+        " WHERE deliveryId=?",
         [
             data.deliveryId,
         ]
@@ -90,9 +90,9 @@ async function deliveryStatusUpdate(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "UPDATE deliveryList"+
-        "SET"+
+        " SET"+
             "status=?"+
-        "WHERE tid=?",
+        " WHERE tid=?",
         [
             data.status,
             data.tid
@@ -106,9 +106,9 @@ async function deliveryRepay(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "UPDATE deliveryList"+
-        "SET"+
+        " SET"+
             "tid=?"+
-        "WHERE tid=?",
+        " WHERE tid=?",
         [
             data.newTid,
             data.tid
@@ -148,15 +148,15 @@ async function deliveryDetailList(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "productId"+
+            " productId"+
             ", cnt"+
             ", img"+
             ", price"+
             ", discount"+
             ", productName"+
             ", deliveryId"+
-        "FROM deliveryDetail"+
-        "WHERE deliveryId=?",
+        " FROM deliveryDetail"+
+        " WHERE deliveryId=?",
         [
             data.deliveryId,
         ]
@@ -169,7 +169,7 @@ async function deliveryDetailCommentsList(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "a.productId"+
+            " a.productId"+
             ", a.cnt"+
             ", a.img"+
             ", a.price"+
@@ -181,11 +181,11 @@ async function deliveryDetailCommentsList(data) {
             ", b.content"+
             ", b.title"+
             ", b.userId"+
-        "FROM deliveryDetail a"+
-        "LEFT OUTER JOIN comments b"+
-        "ON a.productId = b.productId"+
-        "WHERE (a.deliveryId=?)"+
-        "OR (b.userId = ? AND a.productId=?)",
+        " FROM deliveryDetail a"+
+        " LEFT OUTER JOIN comments b"+
+        " ON a.productId = b.productId"+
+        " WHERE (a.deliveryId=?)"+
+        " OR (b.userId = ? AND a.productId=?)",
         [
             data.deliveryId,
             data.userId,
@@ -229,15 +229,15 @@ async function deliveryAddressChange(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "UPDATE deliveryAddressList"+
-        "SET"+
-            "name=?"+
+        " SET"+
+            " name=?"+
             ", postcode=?"+
             ", address=?"+
             ", detailAddress=?"+
             ", extraAddress=?"+
             ", phon=?"+
             ", defaultYn=?"+
-        "WHERE deliveryAddressId=?",
+        " WHERE deliveryAddressId=?",
         [
             data.name,
             data.postcode,
@@ -257,8 +257,8 @@ async function deliveryAddressChangeDefaultYn(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "UPDATE deliveryAddressList"+
-        "SET defaultYn = 'N'"+
-        "WHERE userId=?",
+        " SET defaultYn = 'N'"+
+        " WHERE userId=?",
         [
             data.userId,
         ]
@@ -271,7 +271,7 @@ async function deliveryAddressList(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "userId"+
+            " userId"+
             ", name"+
             ", postcode"+
             ", address"+
@@ -280,9 +280,9 @@ async function deliveryAddressList(data) {
             ", phon"+
             ", defaultYn"+
             ", deliveryAddressId"+
-        "FROM deliveryAddressList"+
-        "WHERE userId=?"+
-        "ORDER BY defaultYn desc",
+        " FROM deliveryAddressList"+
+        " WHERE userId=?"+
+        " ORDER BY defaultYn desc",
         [
             data.userId,
         ]
@@ -295,7 +295,7 @@ async function deliveryAddressOne(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "userId"+
+            " userId"+
             ", name"+
             ", postcode"+
             ", address"+
@@ -304,8 +304,8 @@ async function deliveryAddressOne(data) {
             ", phon"+
             ", defaultYn"+
             ", deliveryAddressId"+
-        "FROM deliveryAddressList"+
-        "WHERE deliveryAddressId=?",
+        " FROM deliveryAddressList"+
+        " WHERE deliveryAddressId=?",
         [
             data.deliveryAddressId,
         ]
@@ -341,7 +341,7 @@ async function deliveryAddressDelete(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "DELETE FROM deliveryAddressList"+
-        "WHERE deliveryAddressId=?",
+        " WHERE deliveryAddressId=?",
         [
             data.deliveryAddressId,
         ]

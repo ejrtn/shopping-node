@@ -5,7 +5,8 @@ import Index from './pages/index'
 import Sell from './pages/sell'
 import Cart from './pages/cart'
 import Buy from './pages/buy'
-
+import DeliveryAddress from './pages/deliveryAddress'
+import DeliveryAddressSC from './pages/deliveryAddressSC'
 
 function App() {
     return (
@@ -15,6 +16,8 @@ function App() {
                 <Route path="/sell" element={<Sell/>} />
                 <Route path="/cart" element={<Cart/>} />
                 <Route path="/buy" element={<Buy/>} />
+                <Route path="/deliveryAddress" element={<DeliveryAddress/>} />
+                <Route path="/deliveryAddressSC" element={<DeliveryAddressSC/>} />
             </Routes>
         </BrowserRouter>
     );
