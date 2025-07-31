@@ -7,6 +7,7 @@ import Cart from './pages/cart'
 import Buy from './pages/buy'
 import DeliveryAddress from './pages/deliveryAddress'
 import DeliveryAddressSC from './pages/deliveryAddressSC'
+import KakaoPaymentApprove from './pages/kakaoPaymentApprove'
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/buy" element={<Buy/>} />
                 <Route path="/deliveryAddress" element={<DeliveryAddress/>} />
                 <Route path="/deliveryAddressSC" element={<DeliveryAddressSC/>} />
+                <Route path="/kakaoPayment/approve" element={<KakaoPaymentApprove/>}/>
             </Routes>
         </BrowserRouter>
     );

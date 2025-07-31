@@ -68,16 +68,40 @@ function Main(){
     }
     useEffect(() => {
         const handleMessage = (event) => {
+            
             if (event.origin !== window.location.origin) return; // 보안 확인
 
+            if(event.data.userAddress != null){
             setUserAddress(event.data.userAddress);
             setUserName(event.data.userName);
-            setUserPhon(event.data.userPhon);
+            setUserPhon(event.data.userPhon);}
         };
 
         window.addEventListener('message', handleMessage);
         return () => window.removeEventListener('message', handleMessage);
     }, []);
+
+    function pay(){
+        let select = document.querySelector("select").value
+        if(select == '배송 요청사항을 선택해주세요') select = '배송 요청사항 없습니다'
+        let data = {
+            "userId":sessionStorage.getItem('user')==null?'deoksu':sessionStorage.getItem('user'),
+            "name":userName,
+            "address":userAddress,
+            "phon":userPhon,
+            "request":(select=='직접입력' ? document.querySelector("textarea").value : select),
+            "quantity":totalCnt,
+            "totalAmount":totalMoney-totalDiscountMoney+deliveryMoney,
+            "deliveryDetailDtos":deliveryDetailDtos
+        }
+
+        axios.post('http://localhost:5000/kakaoPayment/ready',data)
+        .then((response)=>{
+            let win = window.open(response.data.next_redirect_pc_url,'kakapPay')
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
     return(
         <div className={styles.main}>
             <div>
@@ -164,8 +188,8 @@ function Main(){
                 <p><span>할인 금액</span><span className={styles.product_total_discount_money}>{totalDiscountMoney}</span><span>원</span></p>
                 <p><span>배송비</span><span className={styles.delivery_money}>{deliveryMoney}</span><span>원</span></p>
                 <p><span>총 개수</span><span className={styles.total_buy_cnt}>{totalCnt}</span><span>개</span></p>
-                <p><span>총 구매 금액</span><span className={styles.total_buy_money}>{totalMoney-totalDiscountMoney-deliveryMoney}</span><span>원</span></p>
-                <button className={styles.buy_btn}>구매하기</button>
+                <p><span>총 구매 금액</span><span className={styles.total_buy_money}>{totalMoney-totalDiscountMoney+deliveryMoney}</span><span>원</span></p>
+                <button className={styles.buy_btn} onClick={pay}>구매하기</button>
             </div>
         </div>
     )

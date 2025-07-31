@@ -1,3 +1,4 @@
+require('dotenv').config(); // 맨 위에서 호출해야 함
 const express = require('express')
 const cors = require('cors');
 const session = require('express-session');

@@ -22,15 +22,15 @@ async function deliveryRepay(data){
 async function getDelivery(data){
     return models.getDelivery(data);
 }
-async function  deliveryAddressSave(data) {
-    if(data.defaultYn = "Y"){
-        models.deliveryAddressChangeDefaultYn(data.userId);
+async function deliveryAddressSave(data) {
+    if(data.defaultYn == "Y"){
+        await models.deliveryAddressChangeDefaultYn(data);
     }
     return models.deliveryAddressSave(data);
 }
 async function  deliveryAddressChange(data) {
-    if(data.defaultYn = "Y"){
-        models.deliveryAddressChangeDefaultYn(data.userId);
+    if(data.defaultYn == "Y"){
+        await models.deliveryAddressChangeDefaultYn(data);
     }
     return models.deliveryAddressChange(data);
 }

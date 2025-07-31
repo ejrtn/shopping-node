@@ -77,7 +77,16 @@ function Main(){
         })
     }
 
-    
+    function delAddress(deliveryAddressId){
+        axios.post('http://localhost:5000/deliveryAddressDelete',{'deliveryAddressId':deliveryAddressId})
+        .then((response)=>{
+            if(response.data == 1){
+                setAddressList(prevItems => prevItems.filter(item => item.deliveryAddressId !== deliveryAddressId));
+            }
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
 
     return(
         <div className={styles.main}>
@@ -102,7 +111,7 @@ function Main(){
                                 <span className={styles.phon}>{item.phon}</span>
                                 <div className={styles.change_del}>
                                     <button className={styles.change} value={item.deliveryAddressId} onClick={()=>{address(item.deliveryAddressId)}}>수정</button>
-                                    <button className={styles.del} value={item.deliveryAddressId}>삭제</button>
+                                    <button className={styles.del} value={item.deliveryAddressId} onClick={()=>delAddress(item.deliveryAddressId)}>삭제</button>
                                 </div>
                                 
                             </div>

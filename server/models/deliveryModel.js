@@ -2,6 +2,8 @@ const db = require('../config/db');
 
 async function deliverySave(data) {
     const conn = await db.getConnection();
+    const [rows] = await conn.query('SELECT NEXT VALUE FOR sq_delivery AS seq')
+    const seq = rows[0].seq
     const result = await conn.query(
         "INSERT INTO deliveryList("+
             "address"+
@@ -12,20 +14,23 @@ async function deliverySave(data) {
             ", request"+
             ", quantity"+
             ", tid"+
-        ")VALUES(?,?,?,?,?,?,?,?);"+
-        "SELECT lastval(sq_delivery)",
+            ", deliveryId"+
+        ")VALUES(?,?,?,?,?,?,?,?,?);",
         [
             data.address,
             data.totalAmount,
             data.userId,
+            data.name,
             data.phon,
             data.request,
             data.quantity,
-            data.tid
+            data.tid,
+            seq
         ]
     );
     conn.release();
-    return result;
+    result
+    return seq;
 }
 
 async function deliveryList(data) {
@@ -91,7 +96,7 @@ async function deliveryStatusUpdate(data) {
     const result = await conn.query(
         "UPDATE deliveryList"+
         " SET"+
-            "status=?"+
+            " status=?"+
         " WHERE tid=?",
         [
             data.status,
@@ -120,6 +125,7 @@ async function deliveryRepay(data) {
 
 async function deliveryDetailSave(data) {
     const conn = await db.getConnection();
+
     const result = await conn.query(
         "INSERT INTO deliveryDetail("+
             "productId"+
@@ -198,6 +204,8 @@ async function deliveryDetailCommentsList(data) {
 
 async function deliveryAddressSave(data) {
     const conn = await db.getConnection();
+    const [rows] = await conn.query('SELECT NEXT VALUE FOR sq_address AS seq')
+    const seq = rows[0].seq
     const result = await conn.query(
         "INSERT INTO deliveryAddressList("+
             "userId"+
@@ -208,8 +216,9 @@ async function deliveryAddressSave(data) {
             ", extraAddress"+
             ", phon"+
             ", defaultYn"+
-        ")VALUES(?,?,?,?,?,?,?,?);"+
-        "SELECT lastval(sq_address);",
+            ", deliveryAddressId"+
+        ")VALUES(?,?,?,?,?,?,?,?,?);"+
+        "",
         [
             data.userId,
             data.name,
@@ -218,15 +227,18 @@ async function deliveryAddressSave(data) {
             data.detailAddress,
             data.extraAddress,
             data.phon,
-            data.defaultYn
+            data.defaultYn,
+            seq
         ]
     );
     conn.release();
-    return result;
+    result
+    return seq;
 }
 
 async function deliveryAddressChange(data) {
     const conn = await db.getConnection();
+    console.log(data)
     const result = await conn.query(
         "UPDATE deliveryAddressList"+
         " SET"+
@@ -264,6 +276,7 @@ async function deliveryAddressChangeDefaultYn(data) {
         ]
     );
     conn.release();
+    console.log(result)
     return result[0].affectedRows;
 }
 
