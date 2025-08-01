@@ -1,0 +1,226 @@
+.main {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
+
+.main .page_title {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.main .delivery_info {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    margin: 50px 0px;
+}
+
+.main .delivery_info .name {
+    font-size: 19px;
+    font-weight: 600;
+    padding-bottom: 3px;
+}
+
+.main .delivery_info button {
+    cursor: pointer;
+    background: none;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.main .delivery_info .address {
+    font-size: 13px;
+}
+
+.main .delivery_info .phon {
+    font-size: 13px;
+}
+
+.main .delivery_info textarea {
+    height: 20px;
+    padding: 8px;
+    resize: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    border-radius: 4px;
+}
+
+.main table {
+    width: 760px;
+}
+
+.main table tbody {}
+
+.main table tbody picture img {
+    height: 100px;
+    width: 85px;
+}
+
+.main table tbody .color {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 3px;
+}
+
+.main table tbody .color div {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main table tbody .color div span {
+    font-size: 9px;
+}
+
+.main table tbody .price {
+    display: flex;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.main table tbody .price em.discount {
+    color: red;
+    margin-right: 5px;
+}
+
+.main table tbody select {
+    width: 100px;
+    font-size: 13px;
+}
+
+.main table thead th:nth-child(1) {
+    width: 90px;
+}
+
+.main table tbody td:nth-child(2) {
+    align-content: baseline;
+    position: relative;
+}
+
+.main table tbody td:nth-child(3) {
+    display: flex;
+    flex-flow: column;
+}
+
+.main .size_cnt {
+    display: flex;
+    flex-flow: column;
+    gap: 4px;
+}
+
+.main .size_cnt_one {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    justify-content: center;
+}
+
+.main .size_cnt_one .cnt {
+    display: flex;
+    color: black;
+    margin-right: 15px;
+}
+
+.main .size_cnt_one .num {
+    font-size: 13px;
+    font-weight: 500;
+    width: 40px;
+    text-align: center;
+}
+
+.main .size_cnt_one div {
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    margin-right: 2px;
+}
+
+.main .size_cnt_one .size {
+    display: inline-block;
+    width: 24px;
+    margin-right: 10px;
+}
+
+.main .size_cnt_one .money {
+    width: 70px;
+}
+
+.main .x_btn {
+    font-weight: 900;
+    cursor: pointer;
+    text-align: end;
+}
+
+.main .total_money {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.main .color {
+    cursor: pointer;
+}
+
+.main .total {
+    width: 300px;
+}
+
+.main .total h3 {
+    margin-bottom: 3px;
+}
+
+.main .total p {
+    margin-bottom: 3px;
+    display: flex;
+}
+
+.main .total p span {
+    font-size: 14px;
+}
+
+.main .total p span:nth-child(1) {
+    flex: 1;
+}
+
+.main .total .buy_btn {
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid black;
+    background: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.main .comment_btn {
+    cursor: pointer;
+    background-color: #e4e4e4;
+    outline: none;
+    border: 1px solid #c0c0c0;
+    font-size: 10px;
+    position: absolute;
+    bottom: 8px;
+    right: 13px;
+}
+
+.main .comment_head {
+    display: flex;
+    justify-content: space-between;
+    width: 476px;
+    margin-bottom: 1px;
+}
+
+.main .comment_head .comment_rating {
+    width: 73px;
+}
+
+.main .content {
+    resize: none;
+    height: 47px;
+    width: 470px;
+}

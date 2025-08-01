@@ -1,0 +1,74 @@
+.main {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.main table {
+    width: 770px;
+}
+
+.main table thead th:nth-child(1) {
+    width: 270px;
+}
+
+.main table thead th:nth-child(2) {
+    width: 150px;
+}
+
+.main table thead th:nth-child(3) {
+    width: 180px;
+}
+
+.main table thead th:nth-child(4) {
+    width: 100px;
+}
+
+.main table thead th:nth-child(5) {
+    width: 100px;
+}
+
+.main table tbody td,
+.main table thead th {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.main table tbody td:nth-child(2),
+.main table tbody td:nth-child(3),
+.main table tbody td:nth-child(4) {
+    text-align: center;
+}
+
+.main table tbody .recipient {
+    display: flex;
+    flex-flow: column;
+}
+
+.main table tbody .detail {
+    display: flex;
+    flex-flow: column;
+}
+
+.main table tbody .tracking,
+.main table tbody .pay,
+.main table tbody .detail_open,
+.main table tbody .delivery_cancel {
+    cursor: pointer;
+    background-color: #dfdede;
+    border-radius: 5px;
+    padding: 2px 5px;
+    width: 50px;
+    margin: 0 auto;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.main .add {
+    text-align: center;
+    cursor: pointer;
+}
+
+.main .add.hidden {
+    display: none;
+}

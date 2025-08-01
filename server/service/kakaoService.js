@@ -93,7 +93,7 @@ async function refund(req,res){
             },
         }
         );
-        deliveryService.deliveryStatusUpdate(tid,"결제취소");
+        deliveryModel.deliveryStatusUpdate(tid,"결제취소");
 
         res.json(response.data); // 승인된 결제 정보 반환
     } catch (error) {
