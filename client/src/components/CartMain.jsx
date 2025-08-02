@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import styles from '../css/Cart.module.css'
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 function Main(){
+    const navigate = useNavigate()
     const [cartData, setCartData] = useState([]);
     const [totalMoney, setTotalMoney] = useState(0);
     const [totalResultMoney, setTotalResultMoney] = useState(0);
@@ -154,7 +155,7 @@ function Main(){
         }else{
             axios.post('http://localhost:5000/tmpCartSave',tmpCartData)
             .then((response)=>{
-                window.location.href = '/buy?keyData='+response.data
+                navigate('/buy?keyData='+response.data)
             }).catch(err=>{
                 console.log(err)
             })

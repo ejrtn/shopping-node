@@ -1,0 +1,54 @@
+.main{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.main .list{
+    max-width: 1200px;
+}
+
+.main .list .line{
+    padding: 0px 22px;
+    display:flex;
+    justify-content: space-between;
+    gap: 26px;
+}
+.main .list .line img{
+    width: 180px;
+    height: 215px;
+    cursor:pointer;
+}
+.main .list .line .product{
+    width: 180px;
+    margin-bottom: 20px;
+}
+.main .list .line .product a{
+    text-decoration: none;
+    color: black;
+    display: flex;
+    flex-flow: column;
+}
+.main .list .line .product a span{
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    font-size: 13px;
+}
+.main .list .line .product a span em{
+    font-weight: 700;
+}
+.main .list .line .product a span em.discount{
+    color: red;
+}
+.main .add{
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+.main .add.hidden{
+    display:none;
+}

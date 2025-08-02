@@ -22,24 +22,24 @@ async function productList(data){
     else list.endNum = data.num;
     return list;
 }
-async function productTotal(){
+async function productTotal(data){
     return models.productTotal();
 }
 async function productUpdate(data){
     return models.productUpdate(data);
 }
-async function top10(req,res){
-    res.send(await models.top10())
+async function top10(data){
+    return models.top10()
 };
 async function listAll(data){
-    return models.listAll(data);
+    return models.listAll(data)
 }
-async function getProduct(req,res) {
-    res.send(await models.getProduct(req.body));
+async function getProduct(data) {
+    return models.getProduct(data);
 }
 async function productDelete(data) {
     for(let i=0;i<products.length;i++){
-        let ch = models.productDelete(products[i]);
+        let ch = await models.productDelete(products[i]);
         if(ch == 0) return ch;
     }
     return 0;

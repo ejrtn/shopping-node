@@ -3,49 +3,68 @@ const session = require('express-session');
 const router = express.Router();
 const service = require('../service/userService')
 
-router.post('/userSave', (req, res) => {
-    service.userSave(req.data)
+router.post('/userSave',async (req, res) => {
+    service.userSave(req.body)
 });
 
-router.post('/userDelete', (req, res) => {
-    service.userDelete(req.data)
+router.post('/userDelete',async (req, res) => {
+    service.userDelete(req.body)
 });
 
-router.post('/login', (req, res) => {
-    if(service.login(req.data) == 1){
-        req.session.userId = req.data
+router.post('/login',async (req, res) => {
+    const { userId, password } = req.body;
+    const r = await service.login({ userId, password })
+
+    if(r[0][0].cnt == 1){
+        req.session.userId = userId
+        // ✅ 세션 저장 후 응답 보내기
+        req.session.save(err => {
+            if (err) {
+                return res.status(500).send({ loggedIn: false, message: '세션 저장 실패' });
+            }
+            res.send({ loggedIn: true, userId });
+        });
+    }else {
+        res.status(401).send({ loggedIn: false, message: '로그인 실패' });
     }
 });
 
-router.post('/logout', (req, res) => {
+router.get('/session', (req, res) => {
+    if (req.session.userId) {
+        res.send({ loggedIn: true, userId: req.session.userId });
+    } else {
+        res.send({ loggedIn: false });
+    }
+});
+
+router.post('/logout',async (req, res) => {
     req.session.destroy(err => {
-        if (err) return res.send('로그아웃 오류');
-        res.clearCookie('connect.sid');
+        res.send({ loggedIn: false });
     });
 }); 
 
-router.post('/passwordUpdate', (req, res) => {
-    service.passwordUpdate(res.data)
+router.post('/passwordUpdate',async (req, res) => {
+    service.passwordUpdate(req.body)
 });
 
-router.post('/findId', (req, res) => {
-    service.findId(res.data)
+router.post('/findId',async (req, res) => {
+    service.findId(req.body)
 });
 
-router.post('/findPassword', (req, res) => {
-    service.findPassword(res.data)
+router.post('/findPassword',async (req, res) => {
+    service.findPassword(req.body)
 });
 
-router.post('/getUser', (req, res) => {
-    service.getUser(res.data)
+router.post('/getUser',async (req, res) => {
+    service.getUser(req.body)
 });
 
-router.post('/chatInfo', (req, res) => {
-    service.chatInfo(res.data)
+router.post('/chatInfo',async (req, res) => {
+    service.chatInfo(req.body)
 });
 
-router.post('/userList', (req, res) => {
-    service.userList(res.data)
+router.post('/userList',async (req, res) => {
+    service.userList(req.body)
 });
 
 module.exports = router

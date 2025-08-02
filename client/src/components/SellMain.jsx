@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import styles from '../css/Sell.module.css'
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 function Main(){
+    const navigate = useNavigate();
     const { search } = useLocation();
     const params = new URLSearchParams(search);
     const [cnt, setCnt] = useState([]);
@@ -172,7 +173,7 @@ function Main(){
             cnt:JSON.stringify(cnt)
         }).then(response => {
             if(response.data == 1){
-                window.location.href = '/cart'
+                navigate('/cart')
             }
         }).catch(err => {
             console.log(err)

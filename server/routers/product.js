@@ -2,36 +2,36 @@ const express = require('express');
 const router = express.Router();
 const service = require('../service/productService')
 
-router.post('/productSave', (req, res) => {
-    service.productSave(req.data)
+router.post('/productSave',async (req, res) => {
+    res.send(await service.productSave(req.body))
 });
 
-router.post('/productList', (req, res) => {
-    service.productList(req.data)
+router.post('/productList',async (req, res) => {
+    res.send(await service.productList(req.body))
 });
 
-router.post('/productDelete', (req, res) => {
-    service.productDelete(req.data)
+router.post('/productDelete',async (req, res) => {
+    res.send(await service.productDelete(req.body))
 });
 
-router.post('/productUpdate', (req, res) => {
-    service.productUpdate(req.data)
+router.post('/productUpdate',async (req, res) => {
+    res.send(await service.productUpdate(req.body))
 }); 
 
-router.post('/getProduct', (req, res) => {
-    service.getProduct(req,res)
+router.post('/getProduct',async (req, res) => {
+    res.send(await service.getProduct(req.body))
 });
 
-router.post('/imgLoad', (req, res) => {
-    service.imgLoad(req.data)
+router.post('/imgLoad',async (req, res) => {
+    res.send(await service.imgLoad(req.body))
 });
 
-router.post('/listAll', (req, res) => {
-    service.productSave(req.data)
+router.post('/listAll',async (req, res) => {
+    res.send(await service.listAll(req.body))
 });
 
-router.get('/top10', (req, res) => {
-    service.top10(req,res)
+router.get('/top10',async (req, res) => {
+    res.send(await service.top10(req.body))
 });
 
 module.exports = router

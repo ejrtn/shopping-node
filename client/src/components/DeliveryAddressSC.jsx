@@ -1,9 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import styles from '../css/DeliveryAddressSC.module.css'
 import axios from 'axios';
 import React,{ useState, useEffect } from 'react';
 
 function Main(){
+    const navigate = useNavigate();
+    const [userId,setUserId] = useState('')
     const [name, setName] = useState('')
     const [phon, setPhon] = useState('')
     const [extraAddress, setExtraAddress] = useState('');
@@ -15,6 +17,16 @@ function Main(){
     const { deliveryAddressId } = location.state || {};
 
     useEffect(()=>{
+        axios.get('http://localhost:5000/session',{
+            withCredentials: true // 🔥 핵심: 세션 쿠키 전달 허용
+        }).then(res=>{
+            if(res.data.loggedIn){
+                setUserId(res.data.userId)
+            }else{
+                setUserId('')
+            }
+        })
+
         if(deliveryAddressId != ''){
             axios.post("http://localhost:5000/deliveryAddressOne",{"deliveryAddressId":deliveryAddressId})
             .then(response=>{
@@ -89,7 +101,7 @@ function Main(){
     function addressSave(){
         let url = 'deliveryAddressSave'
         let data = {
-            "userId":sessionStorage.getItem('user')==null?'deoksu':sessionStorage.getItem('user'),
+            "userId":document.querySelector("#userId"),
             "name":name,
             "phon":phon,
             "postcode":postcode,
@@ -104,7 +116,7 @@ function Main(){
         }
         axios.post("http://localhost:5000/"+url,data)
         .then(response=>{
-            if(response.data>0) window.location.href = '/deliveryAddress'
+            if(response.data>0) navigate('/deliveryAddress')
         }).catch(err=>{
             
         })
@@ -112,11 +124,11 @@ function Main(){
 
     return(
         <div className={styles.main}>
-            <input type="hidden" id="userId" value={sessionStorage.getItem('user')==null?'deoksu':sessionStorage.getItem('user')}/>
+            <input type="hidden" id="userId" value={userId}/>
             <input type="hidden" className={styles.id} value={deliveryAddressId}/>
             <span>
                 <label>배송지 {deliveryAddressId==''?'추가':'수정'}</label>
-                <label className={styles.close} onClick={()=>{window.location.href = '/deliveryAddress'}}>X</label>
+                <label className={styles.close} onClick={()=>{navigate('/deliveryAddress')}}>X</label>
             </span>
             <div className={styles.content}>
                 <label>이름</label>

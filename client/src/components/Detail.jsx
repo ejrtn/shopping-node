@@ -60,6 +60,35 @@ function Main(){
         })
     },[])
 
+    function comment_btn(e,idx){
+        if(deliveryDetailCommentsList[idx].title == ''){
+            alert("제목 입력해주세요.")
+        }else if(deliveryDetailCommentsList[idx].rating == ''){
+            alert("평점 입력해주세요.")
+        }else if(deliveryDetailCommentsList[idx].content == ''){
+            alert("내용 입력해주세요.")
+        }
+
+        let url = 'commentSave'
+        let commentData = {
+            "rating":parseInt(deliveryDetailCommentsList[idx].rating),
+            "content":deliveryDetailCommentsList[idx].content,
+            "title":deliveryDetailCommentsList[idx].title,
+            "productId":deliveryDetailCommentsList[idx].productId,
+            "userId":document.querySelector("#userId").value
+        }
+        console.log(deliveryDetailCommentsList[idx].commentId)
+        if(deliveryDetailCommentsList[idx].commentId != null){
+            url = 'commentUpdate'
+            commentData['commentId'] = e.target.value
+        }
+        axios.post('http://localhost:5000/'+url,commentData).then(response=>{
+
+        }).catch(err=>{
+
+        })
+    }
+    
     return(
         <div className={styles.main}>
             <div>
@@ -97,12 +126,12 @@ function Main(){
                                         </span>
                                         
                                         <div style={{display: payStatus == '결제완료'?'block':'none'}}>
-                                            <button className={styles.comment_btn} value={item.commentId==null?'':item.commentId}>{item.content==null?'리뷰저장':'리뷰수정'}</button>
+                                            <button className={styles.comment_btn} onClick={(e)=>comment_btn(e,idx)} value={item.commentId==null?'':item.commentId}>{item.content==null?'리뷰저장':'리뷰수정'}</button>
                                             <div className={styles.comment_head}>
-                                                <input type="text" className={styles.comment_title} placeholder="제목" defaultValue={item.title==null?'':item.title}/>
-                                                <input type="text" className={styles.comment_rating} placeholder="평점 0.0~5.0" defaultValue={item.rating==null?'':item.rating}/>
+                                                <input type="text" className={styles.comment_title} placeholder="제목" defaultValue={item.title} onInput={(e)=>{item.title = e.target.value}}/>
+                                                <input type="text" className={styles.comment_rating} placeholder="평점 0.0~5.0" defaultValue={item.rating} onInput={(e)=>{item.rating = e.target.value}}/>
                                             </div>
-                                            <textarea className={styles.content} maxLength="100" placeholder="해당 제품 리뷰 작성(제한 100자)" defaultValue={item.content==null?'':item.content}></textarea>
+                                            <textarea className={styles.content} maxLength="100" placeholder="해당 제품 리뷰 작성(제한 100자)" defaultValue={item.content} onInput={(e)=>{item.content = e.target.value}}></textarea>
                                         </div>
                                         
                                     </td>
@@ -119,7 +148,7 @@ function Main(){
                                                                     , color:'#'+(parseInt(color)>7631988?"000000":'ffffff')}}></div>
                                                                 <label className={styles.size}>{size}</label>
                                                                 <label className={styles.cnt}>
-                                                                    <span className={styles.num}>{item.cnt[color][size]}</span>
+                                                                    <span className={styles.num}>{item.cnt[color][size]}개</span>
                                                                 </label>
                                                                 <label className={styles.money}>{(parseInt(item.price * ((100-parseInt(item.discount))*0.01))*parseInt(item.cnt[color][size]))}원</label>
                                                             </div>

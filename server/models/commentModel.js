@@ -5,7 +5,7 @@ async function commentSave(data) {
     const result = await conn.query(
         "INSERT INTO comments"+
             "(rating, content, title, productId, userId)"+
-        ")VALUES(?,?,?,?,?)",
+        "VALUES(?,?,?,?,?)",
         [
             data.rating,
             data.content,
@@ -22,11 +22,11 @@ async function commentUpdate(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "UPDATE comments"+
-        "SET"+
-            "rating=?"+
-            ",content=?"+
-            ",title=?"+
-        "WHERE commentId=?",
+        " SET"+
+            " rating=?"+
+            " , content=?"+
+            " , title=?"+
+        " WHERE commentId=?",
         [
             data.rating,
             data.content,
@@ -42,17 +42,17 @@ async function productReview(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "a.commentId"+
-            ",a.rating"+
-            ",a.content"+
-            ",a.title"+
-            ",a.productId"+
-            ",a.cdate"+
-            ",b.avg"+
-        "FROM comments a"+
-        "INNER JOIN (SELECT AVG(rating) avg FROM comments) b"+
-        "WHERE productId=?"+
-        "limit ?,11",
+            " a.commentId"+
+            " ,a.rating"+
+            " ,a.content"+
+            " ,a.title"+
+            " ,a.productId"+
+            " ,a.cdate"+
+            " ,b.avg"+
+        " FROM comments a"+
+        " INNER JOIN (SELECT AVG(rating) avg FROM comments) b"+
+        " WHERE productId=?"+
+        " limit ?,11",
         [
             data.productId,
             data.reviewStartNum
@@ -66,7 +66,7 @@ async function productReview(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "DELETE FROM comments"+
-        "WHERE commentId=?",
+        " WHERE commentId=?",
         [
             data.commentId
         ]

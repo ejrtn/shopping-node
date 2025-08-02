@@ -150,7 +150,7 @@ async function listAll(data) {
             ", discount"+
         " FROM products"+
         " WHERE category=?"+
-        data.smallCategory != null ? " and smallCategory="+data.smallCategory+"" : ""+
+        (data.smallCategory != null ? " and smallCategory='"+data.smallCategory+"'" : "")+
         " LIMIT ?,11",
         [
             data.category,
@@ -158,6 +158,7 @@ async function listAll(data) {
         ]
     );
     conn.release();
+    console.log(result)
     return result;
 }
 

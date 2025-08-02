@@ -87,9 +87,9 @@ function Main(){
                                         </Link>
                                     </picture>
                                     <div>
-                                        <a href={`http://localhost:5000/sell?productId=${item.productId}`}>
+                                        <Link to={`/sell?productId=${item.productId}`}>
                                             <span>{item.productName}</span>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div> 
                             ))
@@ -112,9 +112,9 @@ function Main(){
                                         </Link>
                                     </picture>
                                     <div>
-                                        <a href={`http://localhost:5000/sell?productId=${item.productId}`}>
+                                        <Link to={`/sell?productId=${item.productId}`}>
                                             <span>{item.productName}</span>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div> 
                             ))

@@ -85,7 +85,7 @@ function Main(){
         let select = document.querySelector("select").value
         if(select == '배송 요청사항을 선택해주세요') select = '배송 요청사항 없습니다'
         let data = {
-            "userId":sessionStorage.getItem('user')==null?'deoksu':sessionStorage.getItem('user'),
+            "userId":document.querySelector("#userId"),
             "name":userName,
             "address":userAddress,
             "phon":userPhon,

@@ -54,9 +54,9 @@ async function login(data) {
     const conn = await db.getConnection();
     const result = await conn.query(
         "SELECT"+
-            "count(*) AS cnt"+
-        "FROM user"+
-        "WHERE userId=? AND password=?",
+            " count(*) AS cnt"+
+        " FROM user"+
+        " WHERE userId=? AND password=?",
         [
             data.userId,
             data.password

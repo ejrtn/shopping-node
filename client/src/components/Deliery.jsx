@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import styles from '../css/Delivery.module.css'
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 function Main(){
+    const navigate = useNavigate();
     const [start,setStart] = useState(0)
     const [deliveryList,setDeliveryList] = useState([])
     const [deliveryListLength,setDeliveryListLength] = useState(0)
@@ -14,10 +15,12 @@ function Main(){
     },[])
 
     function addDeliveryList(start){
+        console.log(document.querySelector('#userId').value)
         axios.post('http://localhost:5000/deliveryList',{
             'userId':document.querySelector('#userId').value,
             'start':start
         }).then(response=>{
+            console.log(response.data)
             let data = response.data[0].filter((item,idx)=>{
                 if(idx < response.data[0].length-1 && response.data[0].length == 11){
                     return item
@@ -74,7 +77,7 @@ function Main(){
     }
 
     function detail_open(idx){
-        window.location.href = "/detail?deliveryId="+deliveryList[idx].deliveryId
+        navigate("/detail?deliveryId="+deliveryList[idx].deliveryId)
     }
 
     function tracking(idx){

@@ -11,7 +11,7 @@ router.post('/cartList', async(req, res) => {
 });
 
 router.post('/cartDelete', async(req, res) => {
-    res.send(await service.cartDelete(req.data))
+    res.send(await service.cartDelete(req.body))
 });
 
 router.post('/tmpCartSave', async(req, res) => {
@@ -19,7 +19,7 @@ router.post('/tmpCartSave', async(req, res) => {
 });
 
 router.post('/tmpCartDelete', async(req, res) => {
-    res.send(await service.tmpCartDelete(req.data))
+    res.send(await service.tmpCartDelete(req.body))
 });
 
 router.post('/tmpCartList', async(req, res) => {
